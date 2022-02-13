@@ -4,5 +4,9 @@ article {
 }
 
 .question {
-  /* display: none; */
+  display: none;
+}
+
+.result {
+  display: none;
 }

@@ -23,9 +23,9 @@
     <button id="B" type="button" class="btn btn-primary mt-5">Primary</button>
   </article>
   <article class="result">
-    <img id="img" src="" alt="">
-    <h2 id="animal">동물이름</h2>
-    <h3 id="explain">설명</h3>
+    <img id="img" class="rounded-circle mt-5" src="lion.jpg" alt="animal">
+    <h2 id="animal" class="text-center mt-5">동물이름</h2>
+    <h3 id="explain" class="text-center mt-5">설명</h3>
   </article>
   <input type="hidden" id="EI" value="0">
   <input type="hidden" id="SN" value="0">
@@ -68,18 +68,28 @@
       }
     ); 
 
+    // 다음 문제로 이동
     function next() {
       if(num === 13) {
         $(".question").hide(); 
         $(".result").show(); 
+        let mbti = ""; 
+        $("#EI").val() < 2 ? mbti += "I" : mbti += "E"; 
+        $("#SN").val() < 2 ? mbti += "S" : mbti += "N"; 
+        $("#TF").val() < 2 ? mbti += "T" : mbti += "F"; 
+        $("#JP").val() < 2 ? mbti += "J" : mbti += "P"; 
+        alert(mbti); 
+      } else{
+        $(".progress-bar").attr("style", "width: calc(100/12*"+num+"%)")
+        $("#title").html(q[num]["title"]); 
+        $("type").val(q[num]["type"]); 
+        $("#A").html(q[num]["A"]);
+        $("#B").html(q[num]["B"]);
+        num++;  
       }
-      $(".progress-bar").attr("style", "width: calc(100/12*"+num+"%)")
-      $("#title").html(q[num]["title"]); 
-      $("type").val(q[num]["type"]); 
-      $("#A").html(q[num]["A"]);
-      $("#B").html(q[num]["B"]);
-      num++;  
     }
+
+
   </script>
 </body>
 </html>
